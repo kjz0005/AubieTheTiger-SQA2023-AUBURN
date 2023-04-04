@@ -2,8 +2,8 @@
 
 Team Name: AubieTheTiger
 
-Group Members:
-Isabelle Cochran
-Courtney Lee
-Rebekah Harrison
+Group Members:  
+Isabelle Cochran <br />
+Courtney Lee <br />
+Rebekah Harrison <br />
 Ken Zou
