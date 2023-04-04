@@ -3,6 +3,8 @@ Akond Rahman
 Sep 21, 2022
 Source Code to Run Tool on All Kubernetes Manifests  
 '''
+# Isabelle, Courtney, Rebekah, and Ken loves COMP 5710! <3
+
 import scanner 
 import pandas as pd 
 import constants
