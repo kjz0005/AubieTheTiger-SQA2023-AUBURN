@@ -1,8 +1,9 @@
 # AubieTheTiger-SQA2023-AUBURN
 
-Team Name: AubieTheTiger
+**Team Name:** <br />
+AubieTheTiger
 
-Group Members:  
+**Group Members:** <br />
 Isabelle Cochran <br />
 Courtney Lee <br />
 Rebekah Harrison <br />
