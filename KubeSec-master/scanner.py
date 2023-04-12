@@ -9,6 +9,7 @@ import graphtaint
 import os 
 import pandas as pd 
 import numpy as np 
+import logging_example
 
 def getYAMLFiles(path_to_dir):
     valid_  = [] 
@@ -136,8 +137,20 @@ def scanForOverPrivileges(script_path):
     key_count , privi_dict_return = 0, {} 
     kind_values = [] 
     checkVal = parser.checkIfValidK8SYaml( script_path )
+
+# ----------------------------------------------------------------------------
+    # Log check for valid value
+    logObj.info('Log Check for validity over Priviledges')
+# ----------------------------------------------------------------------------
+
     if(checkVal): 
         dict_as_list = parser.loadMultiYAML( script_path )
+
+    # ----------------------------------------------------------------------------
+        # Log check for load
+        logObj.info('Log Check for loadMulti over Priviledges')
+    # ----------------------------------------------------------------------------
+
         yaml_dict    = parser.getSingleDict4MultiDocs( dict_as_list )
         # print(yaml_dict.keys())
         key_lis   = []
@@ -184,11 +197,23 @@ def scanSingleManifest( path_to_script ):
     it can only do taint tracking for secrets and over privileges 
     '''
     checkVal = parser.checkIfValidK8SYaml( path_to_script )
+
+# ----------------------------------------------------------------------------
+    # Log check for valid value
+    logObj.info('Log Check for validity over SingleManifest')
+# ----------------------------------------------------------------------------
+
     # print(checkVal) 
     # initializing 
     within_secret_ = []
     dict_secret    = {} 
     dict_list      = parser.loadMultiYAML( path_to_script )
+
+# ----------------------------------------------------------------------------
+    # Log check for load
+    logObj.info('Log Check for loadMulti over SingleManifest')
+# ----------------------------------------------------------------------------
+
     yaml_dict      = parser.getSingleDict4MultiDocs( dict_list )
     if(checkVal):
         '''
@@ -255,6 +280,11 @@ def scanForHTTP( path2script ):
     http_count = 0 
     if parser.checkIfValidK8SYaml( path2script ) or parser.checkIfValidHelm( path2script ):
         dict_as_list = parser.loadMultiYAML( path2script )
+    # ----------------------------------------------------------------------------
+        # Log check for load
+        logObj.info('Log Check for load MultiYAML over HTTP')
+    # ----------------------------------------------------------------------------
+
         yaml_d       = parser.getSingleDict4MultiDocs( dict_as_list )
         all_vals     = list (parser.getValuesRecursively( yaml_d )  )
         all_vals     = [x_ for x_ in all_vals if isinstance(x_, str) ] 
@@ -718,6 +748,14 @@ def scanForUnconfinedSeccomp(path_script ):
     return dic  
 
 if __name__ == '__main__':
+
+
+# ------------------------------------------------------------------------------------
+    # Software Forensics component of project
+    logObj = logging_example.giveMeLoggingObject()
+    logObj.info('Executing scanner.py')
+# -----------------------------------------------------------------------------------
+
     # test_yaml = '/Users/arahman/K8S_REPOS/GITLAB_REPOS/kubernetes-tutorial-series-youtube/kubernetes-configuration-file-explained/nginx-deployment-result.yaml'
     # scanSingleManifest(test_yaml) 
     # another_yaml = '/Users/arahman/K8S_REPOS/GITLAB_REPOS/stackgres/stackgres-k8s/install/helm/stackgres-operator/values.yaml'
