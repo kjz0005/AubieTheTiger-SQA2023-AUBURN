@@ -334,6 +334,10 @@ def scanForHTTP( path2script ):
 def scanForMissingSecurityContext(path_scrpt):
     dic, lis   = {}, []
     if ( parser.checkIfValidK8SYaml( path_scrpt )  ): 
+# ----------------------------------------------------------------------------
+    # Log check for valid value
+        logObj.info('Log Check for validity over MissingSecurityContext')
+# ----------------------------------------------------------------------------
         cnt = 0 
         dict_as_list = parser.loadMultiYAML( path_scrpt )
         yaml_di      = parser.getSingleDict4MultiDocs( dict_as_list )        
@@ -367,6 +371,10 @@ def scanForMissingSecurityContext(path_scrpt):
 def scanForDefaultNamespace(path_scrpt):
     dic, lis   = {}, []
     if ( parser.checkIfValidK8SYaml( path_scrpt )  ): 
+# ----------------------------------------------------------------------------
+        # Log check for valid value
+        logObj.info('Log Check for validity over DefaultNameSpace')
+# ----------------------------------------------------------------------------
         cnt = 0 
         dict_as_list = parser.loadMultiYAML( path_scrpt )
         yaml_di      = parser.getSingleDict4MultiDocs( dict_as_list )        
