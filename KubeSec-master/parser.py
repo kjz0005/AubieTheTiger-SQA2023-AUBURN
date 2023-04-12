@@ -6,7 +6,6 @@ Parser to file YAML files
 
 import yaml
 import constants 
-# a simple comment
 
 def checkIfWeirdYAML(yaml_script):
     '''
