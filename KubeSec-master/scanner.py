@@ -9,7 +9,10 @@ import graphtaint
 import os 
 import pandas as pd 
 import numpy as np 
+import logging
 import logging_example
+
+logObj = logging_example.giveMeLoggingObject()
 
 def getYAMLFiles(path_to_dir):
     valid_  = [] 
@@ -581,6 +584,10 @@ def runScanner(dir2scan):
                 print(constants.ANLYZING_KW + yml_ + constants.COUNT_PRINT_KW + str(val_cnt) )
                 # get secrets and over privileges 
                 within_secret_, templ_secret_, valid_taint_secr, valid_taint_privi  = scanSingleManifest( yml_ )
+                # ----------------------------------------------------------------------------
+                # Log check for secret values
+                logObj.info('Log Check for validity of secrets and over privileges')
+                # ----------------------------------------------------------------------------
                 # get insecure HTTP            
                 http_dict             = scanForHTTP( yml_ )
                 # get missing security context 
@@ -760,7 +767,6 @@ if __name__ == '__main__':
 
 # ------------------------------------------------------------------------------------
     # Software Forensics component of project
-    logObj = logging_example.giveMeLoggingObject()
     logObj.info('Executing scanner.py')
 # -----------------------------------------------------------------------------------
 
