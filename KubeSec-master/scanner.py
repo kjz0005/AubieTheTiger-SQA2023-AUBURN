@@ -74,6 +74,14 @@ def checkIfValidSecret(single_config_val):
 
 def scanUserName(k_ , val_lis ):
     hard_coded_unames = []
+    if not isinstance(k_, str):
+        print('='*100)
+        print ("Error in scanUserName method in scanner.py: k_ needs to be of type string\n")
+        print ("Printing Traceback...")
+    if not isinstance(val_lis, list):
+        print('='*100)
+        print ("Error in scanUserName method in scanner.py: val_lis needs to be a list\n")
+        print ("Printing Traceback...")
     if isinstance(k_, str):
         k_ = k_.lower()    
     # print('INSPECTING:', k_) 
@@ -87,6 +95,14 @@ def scanUserName(k_ , val_lis ):
 
 def scanPasswords(k_ , val_lis ):
     hard_coded_pwds = []
+    if not isinstance(k_, str):
+        print('='*100)
+        print ("Error in scanPasswords method in scanner.py: k_ needs to be of type string\n")
+        print ("Printing Traceback...")
+    if not isinstance(val_lis, list):
+        print('='*100)
+        print ("Error in scanPassword method in scanner.py: val_lis needs to be a list\n")
+        print ("Printing Traceback...")
     if isinstance(k_, str):
         k_ = k_.lower()    
     if( isValidPasswordName( k_ )   and any(x_ in k_ for x_ in constants.SECRET_PASSWORD_LIST )  ):
@@ -111,6 +127,10 @@ def scanKeys(k_, val_lis):
         for val_ in val_lis:
             if (checkIfValidKeyValue( val_ ) ): 
                 hard_coded_keys.append( val_ )
+    if not isinstance(val_lis, list):
+        print('='*100)
+        print ("Error in scanKeys method in scanner.py: val_lis needs to be a list and not string\n")
+        print ("Printing Traceback...")
     return hard_coded_keys    
 
 
@@ -568,6 +588,8 @@ def scanDockerSock(path_script ):
             if (constants.DOCKERSOCK_PATH_KW in all_values):
                 cnt += 1 
                 dic[ cnt ] = []
+    # else:
+    #     print("ERROR: invalid path script.")
     return dic  
 
 def runScanner(dir2scan):
