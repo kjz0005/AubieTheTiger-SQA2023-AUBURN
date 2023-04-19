@@ -12,8 +12,6 @@ import numpy as np
 import logging
 import logging_example
 
-
-
 logObj = logging_example.giveMeLoggingObject()
 
 def getYAMLFiles(path_to_dir):
