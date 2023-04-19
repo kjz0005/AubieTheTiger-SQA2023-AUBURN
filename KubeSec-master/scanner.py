@@ -12,6 +12,8 @@ import numpy as np
 import logging
 import logging_example
 
+
+
 logObj = logging_example.giveMeLoggingObject()
 
 def getYAMLFiles(path_to_dir):
@@ -26,6 +28,9 @@ def getYAMLFiles(path_to_dir):
 
 def isValidUserName(uName): 
     valid = True
+    if not isinstance(uName, str):
+        print('='*100)
+        print ("Error in isValidUserName method in scanner.py: uName needs to be of type string\n")
     if (isinstance( uName , str)  ): 
         if( any(z_ in uName for z_ in constants.FORBIDDEN_USER_NAMES )   ): 
             valid = False   
@@ -37,6 +42,9 @@ def isValidUserName(uName):
 
 def isValidPasswordName(pName): 
     valid = True
+    if not isinstance(pName, str):
+        print('='*100)
+        print ("Error in isValidPasswordName method in scanner.py: pName needs to be of type string\n")
     if (isinstance( pName , str)  ): 
         if( any(z_ in pName for z_ in constants.FORBIDDEN_PASS_NAMES) )  : 
             valid = False  
@@ -77,11 +85,9 @@ def scanUserName(k_ , val_lis ):
     if not isinstance(k_, str):
         print('='*100)
         print ("Error in scanUserName method in scanner.py: k_ needs to be of type string\n")
-        print ("Printing Traceback...")
     if not isinstance(val_lis, list):
         print('='*100)
         print ("Error in scanUserName method in scanner.py: val_lis needs to be a list\n")
-        print ("Printing Traceback...")
     if isinstance(k_, str):
         k_ = k_.lower()    
     # print('INSPECTING:', k_) 
@@ -98,11 +104,9 @@ def scanPasswords(k_ , val_lis ):
     if not isinstance(k_, str):
         print('='*100)
         print ("Error in scanPasswords method in scanner.py: k_ needs to be of type string\n")
-        print ("Printing Traceback...")
     if not isinstance(val_lis, list):
         print('='*100)
         print ("Error in scanPassword method in scanner.py: val_lis needs to be a list\n")
-        print ("Printing Traceback...")
     if isinstance(k_, str):
         k_ = k_.lower()    
     if( isValidPasswordName( k_ )   and any(x_ in k_ for x_ in constants.SECRET_PASSWORD_LIST )  ):
@@ -130,7 +134,6 @@ def scanKeys(k_, val_lis):
     if not isinstance(val_lis, list):
         print('='*100)
         print ("Error in scanKeys method in scanner.py: val_lis needs to be a list and not string\n")
-        print ("Printing Traceback...")
     return hard_coded_keys    
 
 
